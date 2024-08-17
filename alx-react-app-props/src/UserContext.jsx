@@ -2,10 +2,10 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-// Create a Context for the user data
-const UserContext = createContext(null);
+// Create a Context
+const UserContext = createContext();
 
-// Define the UserProvider component
+// Provider component
 export function UserProvider({ children, userData }) {
   return (
     <UserContext.Provider value={userData}>
@@ -14,7 +14,7 @@ export function UserProvider({ children, userData }) {
   );
 }
 
-// Define prop types for UserProvider
+// Prop validation for UserProvider
 UserProvider.propTypes = {
   children: PropTypes.node.isRequired,
   userData: PropTypes.shape({
@@ -23,7 +23,7 @@ UserProvider.propTypes = {
   }).isRequired,
 };
 
-// Custom hook to use the UserContext
+// Custom hook to use UserContext
 export function useUser() {
   return useContext(UserContext);
 }
