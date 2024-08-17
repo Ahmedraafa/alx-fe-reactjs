@@ -1,24 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useUser } from '../UserContext'; // تأكد من المسار الصحيح
 
-function UserProfile({ name, age, bio }) {
+function UserProfile() {
+  const userData = useUser(); // الحصول على البيانات من السياق
+
   return (
-    <div style={{ border: '1px solid gray', padding: '10px', margin: '10px', borderRadius: '5px' }}>
-      <h2 style={{ color: 'blue' }}>{name}</h2>
-      <p>Age: <span style={{ fontWeight: 'bold' }}>{age}</span></p>
-      <p>Bio: {bio}</p>
+    <div>
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
     </div>
   );
 }
-
-UserProfile.propTypes = {
-  name: PropTypes.string.isRequired,
-  age: PropTypes.string.isRequired,
-  bio: PropTypes.string
-};
-
-UserProfile.defaultProps = {
-  bio: 'No bio available'
-};
 
 export default UserProfile;
