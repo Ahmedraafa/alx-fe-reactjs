@@ -15,6 +15,9 @@ const MainContent = () => {
       <p style={{ color: '#004d40', fontSize: '18px' }}>
         I love to visit New York, Paris, and Tokyo.
       </p>
+      <p style={{ color: '#004d40', fontSize: '18px' }}>
+        Main
+      </p>
     </div>
   );
 };
