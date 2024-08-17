@@ -1,13 +1,15 @@
+// src/components/UserProfile.jsx
 import React from 'react';
-import { useUser } from '../UserContext'; // تأكد من المسار الصحيح
+import { useUser } from '../UserContext.jsx';
 
 function UserProfile() {
-  const userData = useUser(); // الحصول على البيانات من السياق
+  const { name, email } = useUser();
 
   return (
     <div>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
+      <h1>User Profile</h1>
+      <p>Name: {name}</p>
+      <p>Email: {email}</p>
     </div>
   );
 }
