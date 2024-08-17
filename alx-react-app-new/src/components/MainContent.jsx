@@ -1,11 +1,12 @@
+// src/components/MainContent.jsx
 import React from 'react';
 
-function MainContent() {
+const MainContent = () => {
   return (
-    <main style={{ padding: '20px', backgroundColor: '#f4f4f4' }}>
-      <p>Welcome to the main content area!</p>
-    </main>
+    <div style={{ padding: '20px', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
+    </div>
   );
-}
+};
 
 export default MainContent;
