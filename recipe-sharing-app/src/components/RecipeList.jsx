@@ -3,16 +3,16 @@ import React, { useEffect } from 'react';
 import { useRecipeStore } from './recipeStore';
 import Recipe from './Recipe';
 import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom';  // Import Link for navigation
 
 const RecipeList = () => {
-  const { recipes, filteredRecipes, filterRecipes } = useRecipeStore(state => ({
-    recipes: state.recipes,
+  const { filteredRecipes, filterRecipes } = useRecipeStore(state => ({
     filteredRecipes: state.filteredRecipes,
     filterRecipes: state.filterRecipes
   }));
 
   useEffect(() => {
-    filterRecipes(); // تصفية الوصفات عند تحميل المكون
+    filterRecipes(); // Filter recipes when the component mounts or search term changes
   }, [filterRecipes]);
 
   return (
@@ -21,7 +21,12 @@ const RecipeList = () => {
       <div className="recipe-list">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map(recipe => (
-            <Recipe key={recipe.id} recipe={recipe} />
+            <div key={recipe.id} className="recipe-item">
+              <Recipe recipe={recipe} />
+              <Link to={`/recipe/${recipe.id}`}>
+                <button>View Details</button>
+              </Link>
+            </div>
           ))
         ) : (
           <p>No recipes found</p>
