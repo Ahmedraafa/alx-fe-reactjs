@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import useRecipeStore from './recipeStore';
 
 const EditRecipeForm = ({ recipe }) => {
@@ -28,6 +29,15 @@ const EditRecipeForm = ({ recipe }) => {
       <button type="submit">Update Recipe</button>
     </form>
   );
+};
+
+// التحقق من نوع props
+EditRecipeForm.propTypes = {
+  recipe: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EditRecipeForm;

@@ -1,5 +1,6 @@
+// src/components/AddRecipeForm.jsx
 import React, { useState } from 'react';
-import useRecipeStore from './recipeStore';
+import { useRecipeStore } from './recipeStore'; // تحديث الاستيراد هنا
 
 const AddRecipeForm = () => {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
@@ -8,7 +9,12 @@ const AddRecipeForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addRecipe({ id: Date.now(), title, description });
+    const newRecipe = {
+      id: Date.now(), // Example ID, replace with actual ID logic
+      title,
+      description
+    };
+    addRecipe(newRecipe);
     setTitle('');
     setDescription('');
   };
@@ -18,15 +24,15 @@ const AddRecipeForm = () => {
       <h2>Add Recipe</h2>
       <input
         type="text"
+        placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
         required
       />
       <textarea
+        placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
         required
       />
       <button type="submit">Add Recipe</button>

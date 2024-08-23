@@ -1,27 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useRecipeStore from './recipeStore';
+// src/components/RecipeList.jsx
+import React, { useEffect } from 'react';
+import { useRecipeStore } from './recipeStore';
+import Recipe from './Recipe';
+import SearchBar from './SearchBar';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes);
+  const { recipes, filteredRecipes, filterRecipes } = useRecipeStore(state => ({
+    recipes: state.recipes,
+    filteredRecipes: state.filteredRecipes,
+    filterRecipes: state.filterRecipes
+  }));
+
+  useEffect(() => {
+    filterRecipes(); // تصفية الوصفات عند تحميل المكون
+  }, [filterRecipes]);
 
   return (
     <div>
-      <h2>Recipe List</h2>
-      <Link to="/add-recipe">Add New Recipe</Link>
-      {recipes.length === 0 ? (
-        <p>No recipes available.</p>
-      ) : (
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <h3>{recipe.title}</h3>
-              <p>{recipe.description}</p>
-              <Link to={`/recipe/${recipe.id}`}>View Details</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <SearchBar />
+      <div className="recipe-list">
+        {filteredRecipes.length > 0 ? (
+          filteredRecipes.map(recipe => (
+            <Recipe key={recipe.id} recipe={recipe} />
+          ))
+        ) : (
+          <p>No recipes found</p>
+        )}
+      </div>
     </div>
   );
 };
