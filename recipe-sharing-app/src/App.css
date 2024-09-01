@@ -1,128 +1,141 @@
-/* إعدادات عامة */
+/* src/styles.css */
+
+
+/* تنسيق الأساسيات */
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background-color: #f4f4f4;
 }
 
 
-/* الحاوية الرئيسية لتطبيق */
+/* الحاوية الرئيسية للتطبيق */
 
 .container {
-    max-width: 900px;
-    width: 100%;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 
-/* تنسيق العنوان الرئيسي */
-
-h1 {
-    color: #333;
-    margin-bottom: 30px;
-    /* زيادة المسافة أسفل العنوان */
-}
-
-
-/* تنسيق روابط التصفح */
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-
-/* قائمة الوصفات */
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-}
-
-li {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-    /* زيادة المسافة بين العناصر في القائمة */
-}
-
-h3 {
-    margin: 0;
-    color: #333;
-    margin-bottom: 10px;
-    /* زيادة المسافة أسفل العناوين في القائمة */
-}
-
-p {
-    color: #666;
-}
-
-
-/* نموذج إضافة الوصفة */
+/* تنسيق النموذج */
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    /* زيادة المسافة بين العناصر في النموذج */
-    width: 100%;
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
+form input,
+form textarea,
+form button {
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-textarea {
-    resize: vertical;
+form button {
+    background-color: #f43f5e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
+
+form button:hover {
+    background-color: #e12d39;
+}
+
+
+/* تنسيق قائمة الوصفات */
+
+.recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recipe-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* تنسيق تفاصيل الوصفة */
+
+.recipe {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe h2 {
+    margin-top: 0;
+}
+
+
+/* تنسيق قائمة المفضلات */
+
+.favorites-list,
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* تنسيق شريط البحث */
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* تنسيق الأزرار */
 
 button {
-    padding: 12px 18px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
     cursor: pointer;
-    margin-top: 10px;
-    /* زيادة المسافة أعلى الأزرار */
 }
 
 button:hover {
-    background-color: #0056b3;
+    opacity: 0.8;
 }
 
 
-/* تفاصيل الوصفة */
+/* تنسيق صفحة المفضلات */
 
-.recipe-details {
-    margin-bottom: 30px;
-    /* زيادة المسافة أسفل تفاصيل الوصفة */
+.favorites-list h2 {
+    margin-top: 0;
 }
 
-.edit-button,
-.delete-button {
-    margin-right: 10px;
-    margin-top: 10px;
-    /* زيادة المسافة أعلى الأزرار الخاصة بالتعديل والحذف */
+
+/* تنسيق صفحة التوصيات */
+
+.recommendations-list h2 {
+    margin-top: 0;
+}
+
+
+/* تنسيق صفحة عدم العثور على وصفة */
+
+.not-found {
+    text-align: center;
+    padding: 20px;
 }

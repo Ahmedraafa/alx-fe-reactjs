@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRecipeStore } from './recipeStore';
+import useRecipeStore from './recipeStore';
 
 const FavoritesList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
   const favorites = useRecipeStore(state => state.favorites);
+  const recipes = useRecipeStore(state => state.recipes);
 
   const favoriteRecipes = recipes.filter(recipe => favorites.includes(recipe.id));
 

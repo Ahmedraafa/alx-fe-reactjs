@@ -1,28 +1,24 @@
 import React from 'react';
-import { useRecipeStore } from './recipeStore';
+import useRecipeStore from './recipeStore';
 
-const FavoritesList = () => {
-  // Directly use the favorites from the store
-  const favorites = useRecipeStore(state => state.favorites);
-  const recipes = useRecipeStore(state => state.recipes);  // Ensure this is used
-
-  const favoriteRecipes = recipes.filter(recipe => favorites.includes(recipe.id));
+const RecommendationsList = () => {
+  const recommendations = useRecipeStore(state => state.recommendations);
 
   return (
     <div>
-      <h2>My Favorites</h2>
-      {favoriteRecipes.length > 0 ? (
-        favoriteRecipes.map(recipe => (
+      <h2>Recommended Recipes</h2>
+      {recommendations.length > 0 ? (
+        recommendations.map(recipe => (
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
           </div>
         ))
       ) : (
-        <p>No favorite recipes yet.</p>
+        <p>No recommendations yet.</p>
       )}
     </div>
   );
 };
 
-export default FavoritesList;
+export default RecommendationsList;

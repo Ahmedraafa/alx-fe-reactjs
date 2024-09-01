@@ -1,16 +1,15 @@
-// src/components/AddRecipeForm.jsx
 import React, { useState } from 'react';
-import { useRecipeStore } from './recipeStore'; // تحديث الاستيراد هنا
+import useRecipeStore from './recipeStore';
 
 const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore((state) => state.addRecipe);
+  const addRecipe = useRecipeStore(state => state.addRecipe);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newRecipe = {
-      id: Date.now(), // Example ID, replace with actual ID logic
+      id: Date.now(),
       title,
       description
     };

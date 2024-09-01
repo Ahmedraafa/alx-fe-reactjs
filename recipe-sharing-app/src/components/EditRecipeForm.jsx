@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useRecipeStore from './recipeStore';
 
 const EditRecipeForm = ({ recipe }) => {
-  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
+  const updateRecipe = useRecipeStore(state => state.updateRecipe);
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
 
@@ -31,12 +31,11 @@ const EditRecipeForm = ({ recipe }) => {
   );
 };
 
-// التحقق من نوع props
 EditRecipeForm.propTypes = {
   recipe: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
   }).isRequired,
 };
 

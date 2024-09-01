@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useRecipeStore } from './recipeStore';
+import useRecipeStore from './recipeStore';
 
 const DeleteRecipeButton = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
@@ -12,7 +12,6 @@ const DeleteRecipeButton = ({ recipeId }) => {
   );
 };
 
-// التحقق من نوع props
 DeleteRecipeButton.propTypes = {
   recipeId: PropTypes.number.isRequired
 };

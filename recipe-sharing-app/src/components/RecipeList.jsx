@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useRecipeStore } from './recipeStore';
 import Recipe from './Recipe';
 import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';  // Import Link for navigation
+import { Link } from 'react-router-dom';
 
 const RecipeList = () => {
   const { filteredRecipes, filterRecipes } = useRecipeStore(state => ({
