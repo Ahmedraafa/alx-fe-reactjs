@@ -1,17 +1,19 @@
-import React from 'react';
-import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/FormikForm';
+// import RegistrationForm from './components/RegistrationForm'
+import FormikForm from './components/formikForm'
+import './App.css'
+import RegistrationForm from './components/RegistrationForm'
 
 function App() {
+  
   return (
-    <div className="App">
-      <h1>Registration Form with Manual Validation</h1>
-      <RegistrationForm />
-
-      <h1>Registration Form with Formik</h1>
-      <FormikForm />
-    </div>
-  );
+    <>
+      <div>
+        <h1>User Registration</h1>
+        {/* <RegistrationForm /> */}
+        <FormikForm />
+       </div>
+    </>
+  )
 }
 
-export default App;
+export default App
