@@ -1,52 +1,86 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (username && email && password) {
-      // Logic for submitting form
-      console.log({ username, email, password });
-    } else {
-      alert('Please fill in all fields');
-    }
-  };
+    const validateForm = () => {
+        const Errors = {};
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-  );
+        if (!username) {
+            Errors.username = 'Please enter a username.';
+        }
+
+        if (!email) {
+            Errors.email = 'Please enter an email.';
+        }
+
+        if (!password) {
+            Errors.password = 'Please enter a password.';
+        }
+
+        setErrors(Errors);
+
+        return Object.keys(Errors).length === 0;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // Validate the form
+        const isValid = validateForm();
+
+        if (!isValid) {
+            return;
+        }
+
+        // Handle form submission logic here
+        // ...
+
+        // Reset form fields after submission
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setErrors({});
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            {errors.username && <p>{errors.username}</p>}
+            {errors.email && <p>{errors.email}</p>}
+            {errors.password && <p>{errors.password}</p>}
+            <label>
+                Username:
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+            </label>
+            <br />
+            <label>
+                Email:
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </label>
+            <br />
+            <label>
+                Password:
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </label>
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    );
 };
 
 export default RegistrationForm;
