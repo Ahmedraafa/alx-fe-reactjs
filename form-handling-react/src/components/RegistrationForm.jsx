@@ -1,3 +1,4 @@
+// src/components/RegistrationForm.js
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
@@ -7,65 +8,53 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
-    const formErrors = {};
-    
-    if (!username) formErrors.username = 'Username is required';
-    if (!email) formErrors.email = 'Email is required';
-    if (!password) formErrors.password = 'Password is required';
-    
-    setErrors(formErrors);
-    
-    return Object.keys(formErrors).length === 0;
+    const errors = {};
+    if (!username) errors.username = 'Username is required';
+    if (!email) errors.email = 'Email is required';
+    if (!password) errors.password = 'Password is required';
+    return errors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const isValid = validateForm();
-    
-    if (!isValid) return;
-
-    console.log({ username, email, password });
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setErrors({});
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length === 0) {
+      console.log({ username, email, password });
+    } else {
+      setErrors(validationErrors);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
-      {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
-      {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
-      
-      <label>
-        Username:
+      <div>
+        <label>Username:</label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        Email:
+        {errors.username && <span>{errors.username}</span>}
+      </div>
+      <div>
+        <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        Password:
+        {errors.email && <span>{errors.email}</span>}
+      </div>
+      <div>
+        <label>Password:</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
+        {errors.password && <span>{errors.password}</span>}
+      </div>
+      <button type="submit">Register</button>
     </form>
   );
 };
