@@ -4,27 +4,29 @@ import PropTypes from 'prop-types';
 const SearchBar = ({ onSearch }) => {
   const [username, setUsername] = useState('');
 
-  const handleSearch = () => {
-    onSearch(username);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim() !== '') {
+      onSearch(username);
+    }
   };
 
   return (
-    <div style={{ margin: '20px', textAlign: 'center' }}>
+    <form onSubmit={handleSubmit} style={{ textAlign: 'center', marginTop: '20px' }}>
       <input
         type="text"
-        placeholder="Enter GitHub username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter GitHub username"
         style={{ padding: '10px', width: '300px' }}
       />
-      <button onClick={handleSearch} style={{ padding: '10px 20px', marginLeft: '10px' }}>
+      <button type="submit" style={{ padding: '10px 20px', marginLeft: '10px' }}>
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
-// Adding PropTypes validation
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };

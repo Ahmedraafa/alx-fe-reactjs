@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const UserCard = ({ user }) => {
-  if (!user) return null;
-
   return (
     <div style={{ border: '1px solid #ddd', padding: '20px', margin: '20px auto', width: '300px', textAlign: 'center' }}>
       <img src={user.avatar_url} alt={user.login} style={{ width: '100px', borderRadius: '50%' }} />
@@ -16,7 +14,6 @@ const UserCard = ({ user }) => {
   );
 };
 
-// Adding PropTypes validation
 UserCard.propTypes = {
   user: PropTypes.shape({
     avatar_url: PropTypes.string,
@@ -24,7 +21,7 @@ UserCard.propTypes = {
     name: PropTypes.string,
     bio: PropTypes.string,
     html_url: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export default UserCard;

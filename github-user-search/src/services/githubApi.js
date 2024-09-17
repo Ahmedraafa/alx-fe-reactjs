@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const githubApi = axios.create ({
-  baseURL: 'https://api.github.com',
-  headers: {
-    Authorization: `token ${process.env.REACT_APP_GITHUB_API_KEY}`,
-  },
-});
-
-export const fetchUser = username => githubApi.get (`/users/${username}`);
+export const fetchUserData = async username => {
+  try {
+    const response = await axios.get (
+      `https://api.github.com/users/${username}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error ('User not found');
+  }
+};
