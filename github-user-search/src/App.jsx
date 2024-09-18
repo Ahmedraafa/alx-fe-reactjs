@@ -1,36 +1,19 @@
-import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
-import UserCard from './components/UserCard';
-import { fetchUserData } from './services/githubService';
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Search from './components/Search';
 
-const App = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSearch = async (username) => {
-    setLoading(true);
-    setError('');
-    setUser(null);
-    try {
-      const userData = await fetchUserData(username);
-      setUser(userData);
-    } catch (err) {
-      setError('Looks like we can’t find the user.');
-    } finally {
-      setLoading(false);
-    }
-  };
+function App() {
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>GitHub User Search</h1>
-      <SearchBar onSearch={handleSearch} />
-      {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
-      {error && <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>}
-      {user && <UserCard user={user} />}
-    </div>
+    <>
+      <div className="min-h-screen  text-[#f8f9fa] flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-bold mb-8 text-[#6c757d]">
+          Search GitHub Like a Pro!
+        </h1>
+        <Search />
+      </div>
+    </>
   );
-};
+}
 
 export default App;
