@@ -9,4 +9,3 @@ export const fetchUserData = async (username, location, minRepos) => {
   const response = await axios.get(`https://api.github.com/search/users?q=${query}`);
   return response.data;
 };
-
